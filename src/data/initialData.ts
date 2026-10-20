@@ -121,6 +121,14 @@ export const INITIAL_FILES: WorkspaceFile[] = [
     language: 'javascript',
     content: `// Oct 2026 WebMCP Open Standard Bridge for Browser Agents\nexport function registerWebMcpTools(windowContext) {\n  return {\n    protocolVersion: '2026.10',\n    tools: [\n      'webmcp.exposeStructuredDom',\n      'devtools.performanceFlamegraphAudit',\n      'devtools.jsExecutionStepper'\n    ]\n  };\n}`,
   },
+  {
+    id: 'f-version-json',
+    name: 'version.json',
+    path: '/version.json',
+    type: 'file',
+    language: 'json',
+    content: `{\n  "version_code": 113,\n  "version_name": "2.0.0",\n  "min_supported_version_code": 1,\n  "changelog": [\n    "Oct 2026 Antigravity 2.0 Upgrade: Added Gemini 4 Argon, Gemini 3.5 Pro/Flash, and Claude 4 Sonnet model engines",\n    "Added Parallel Background Subagent Orchestrator with isolated context windows and live trajectory logs",\n    "Added Git Worktrees Manager for conflict-free multi-agent parallel execution and 1-click merge to main",\n    "Added Durable Execution Checkpoints and Time-Travel Rewind snapshots across IDE and Chat",\n    "Added Persistent Project Memory and AGENTS.md Rules Bank with project, protocol, and session scopes",\n    "Added Oct 2026 WebMCP Standard and Chrome DevTools AI Agent Inspector (Flamegraph & JS Stepper)"\n  ],\n  "is_critical": false\n}`,
+  },
 ]
 
 export const INITIAL_CHAT_SESSION: ChatSession = {

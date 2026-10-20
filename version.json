@@ -1,10 +1,14 @@
 {
-  "version_code": 112,
-  "version_name": "1.0.12",
+  "version_code": 113,
+  "version_name": "2.0.0",
   "min_supported_version_code": 1,
   "changelog": [
-    "Added support for browser extensions(Not chrome extensions), it has it own apis for mcp to create by user"
-    
+    "Oct 2026 Antigravity 2.0 Upgrade: Added Gemini 4 Argon, Gemini 3.5 Pro/Flash, and Claude 4 Sonnet model engines",
+    "Added Parallel Background Subagent Orchestrator with isolated context windows and live trajectory logs",
+    "Added Git Worktrees Manager for conflict-free multi-agent parallel execution and 1-click merge to main",
+    "Added Durable Execution Checkpoints and Time-Travel Rewind snapshots across IDE and Chat",
+    "Added Persistent Project Memory and AGENTS.md Rules Bank with project, protocol, and session scopes",
+    "Added Oct 2026 WebMCP Standard and Chrome DevTools AI Agent Inspector (Flamegraph & JS Stepper)"
   ],
   "is_critical": false
 }
