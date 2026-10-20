@@ -565,7 +565,7 @@ export const App: React.FC = () => {
           }}
           className="text-base font-bold tracking-tight text-white whitespace-nowrap shrink-0"
         >
-          AntiGem
+          Antigravitymobpro
         </a>
 
         {/* Zone 2: 5 concise single-line text navigation links */}

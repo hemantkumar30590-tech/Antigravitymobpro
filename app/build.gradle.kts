@@ -35,6 +35,9 @@ android {
             storePassword = "123456"
             keyAlias = "antigem"
             keyPassword = "123456"
+            enableV1Signing = true
+            enableV2Signing = true
+            enableV3Signing = true
         }
     }
 
@@ -73,7 +76,7 @@ android {
     }
 
     base {
-        archivesName.set("antiGem")
+        archivesName.set("Antigravitymobpro")
     }
 
     compileOptions {
