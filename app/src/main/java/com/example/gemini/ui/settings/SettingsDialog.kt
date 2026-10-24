@@ -2651,6 +2651,16 @@ private fun McpSubScreen(
                     serverUrl = "https://stitch.googleapis.com/mcp",
                     headers = mapOf("X-Goog-Api-Key" to "")
                 )),
+                Triple("GitHub (Termux)", "Stdio", com.example.gemini.domain.model.McpServerSpec(
+                    serverName = "github",
+                    command = "pnpm",
+                    args = listOf("dlx", "@modelcontextprotocol/server-github"),
+                    env = mapOf(
+                        "GITHUB_PERSONAL_ACCESS_TOKEN" to "",
+                        "LD_PRELOAD" to "/data/data/com.termux/files/usr/lib/libtermux-exec.so",
+                        "PATH" to "/data/data/com.termux/files/home/.local/bin:/data/data/com.termux/files/usr/bin:/system/bin"
+                    )
+                )),
             )
             Surface(
                 shape = RoundedCornerShape(8.dp),
@@ -9151,7 +9161,7 @@ private fun AboutSubScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/santoshkurmi/antigem"))
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/hemantkumar30590-tech/Antigravitymobpro"))
                             context.startActivity(intent)
                         }
                 ) {
@@ -9178,7 +9188,7 @@ private fun AboutSubScreen(
                                     color = MaterialTheme.colorScheme.onSurface
                                 )
                                 Text(
-                                    text = "github.com/santoshkurmi/antigem",
+                                    text = "github.com/hemantkumar30590-tech/Antigravitymobpro",
                                     fontSize = 11.sp,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -9199,7 +9209,7 @@ private fun AboutSubScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/santoshkurmi/antigem/releases"))
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/hemantkumar30590-tech/Antigravitymobpro/releases"))
                             context.startActivity(intent)
                         }
                 ) {

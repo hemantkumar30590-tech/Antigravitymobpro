@@ -141,7 +141,7 @@ data class AiModel(
         id.contains("claude", ignoreCase = true) || displayName.contains("claude", ignoreCase = true) -> ModelFamily.CLAUDE
         else -> ModelFamily.GEMINI
     },
-    val supportsThinking: Boolean = id.contains("thinking", ignoreCase = true) || id.contains("flash", ignoreCase = true) || id.contains("pro", ignoreCase = true) || id.contains("high", ignoreCase = true) || id.contains("medium", ignoreCase = true) || id.contains("low", ignoreCase = true),
+    val supportsThinking: Boolean = id.contains("argon", ignoreCase = true) || id.contains("thinking", ignoreCase = true) || id.contains("flash", ignoreCase = true) || id.contains("pro", ignoreCase = true) || id.contains("high", ignoreCase = true) || id.contains("medium", ignoreCase = true) || id.contains("low", ignoreCase = true),
     val description: String = "",
     val isDefault: Boolean = false,
     val key: String = "",
@@ -149,7 +149,69 @@ data class AiModel(
     val tier: String? = null
 ) {
     companion object {
-        val DEFAULT_MODELS = emptyList<AiModel>()
+        val DEFAULT_MODELS = listOf(
+            AiModel(
+                id = "gemini-4-argon",
+                displayName = "Gemini 4 Argon",
+                family = ModelFamily.GEMINI,
+                supportsThinking = true,
+                description = "Google Gemini 4 Argon — Next-Gen Oct 2026 Autonomous Agentic Flagship Model",
+                isDefault = true,
+                key = "gemini-4-argon",
+                baseName = "Gemini 4 Argon",
+                tier = "High"
+            ),
+            AiModel(
+                id = "gemini-3.8-flash-high",
+                displayName = "Gemini 3.8 Flash (High)",
+                family = ModelFamily.GEMINI,
+                supportsThinking = true,
+                description = "Fast multi-modal reasoning engine with high thinking budget",
+                key = "gemini-3.8-flash-high",
+                baseName = "Gemini 3.8 Flash",
+                tier = "High"
+            ),
+            AiModel(
+                id = "gemini-3.8-flash-medium",
+                displayName = "Gemini 3.8 Flash (Med)",
+                family = ModelFamily.GEMINI,
+                supportsThinking = true,
+                description = "Fast multi-modal reasoning engine with medium thinking budget",
+                key = "gemini-3.8-flash-medium",
+                baseName = "Gemini 3.8 Flash",
+                tier = "Medium"
+            ),
+            AiModel(
+                id = "gemini-3.5-pro",
+                displayName = "Gemini 3.5 Pro",
+                family = ModelFamily.GEMINI,
+                supportsThinking = true,
+                description = "Deep reasoning model for complex code refactoring and architecture",
+                key = "gemini-3.5-pro",
+                baseName = "Gemini 3.5 Pro",
+                tier = "High"
+            ),
+            AiModel(
+                id = "claude-4-sonnet",
+                displayName = "Claude 4 Sonnet",
+                family = ModelFamily.CLAUDE,
+                supportsThinking = true,
+                description = "Anthropic Claude 4 flagship coding model with extended thinking",
+                key = "claude-4-sonnet",
+                baseName = "Claude 4 Sonnet",
+                tier = "High"
+            ),
+            AiModel(
+                id = "claude-3-7-sonnet",
+                displayName = "Claude 3.7 Sonnet (Thinking)",
+                family = ModelFamily.CLAUDE,
+                supportsThinking = true,
+                description = "Anthropic Claude 3.7 hybrid reasoning engine",
+                key = "claude-3-7-sonnet",
+                baseName = "Claude 3.7 Sonnet",
+                tier = "Thinking"
+            )
+        )
 
         fun fromApi(id: String, displayName: String?, description: String? = null): AiModel {
             val name = displayName?.takeIf { it.isNotBlank() } ?: formatModelName(id)
@@ -157,7 +219,7 @@ data class AiModel(
                 id.contains("claude", ignoreCase = true) || name.contains("claude", ignoreCase = true) -> ModelFamily.CLAUDE
                 else -> ModelFamily.GEMINI
             }
-            val thinking = id.contains("thinking", ignoreCase = true) || id.contains("flash", ignoreCase = true) || id.contains("pro", ignoreCase = true) || id.contains("high", ignoreCase = true) || id.contains("medium", ignoreCase = true) || id.contains("low", ignoreCase = true)
+            val thinking = id.contains("argon", ignoreCase = true) || id.contains("thinking", ignoreCase = true) || id.contains("flash", ignoreCase = true) || id.contains("pro", ignoreCase = true) || id.contains("high", ignoreCase = true) || id.contains("medium", ignoreCase = true) || id.contains("low", ignoreCase = true)
             val desc = description ?: when (family) {
                 ModelFamily.CLAUDE -> "Anthropic Claude via Antigravity"
                 ModelFamily.GEMINI -> "Google Gemini via Antigravity"
@@ -200,7 +262,7 @@ data class AiModel(
             if (id.isNotBlank() && !id.startsWith("MODEL_", ignoreCase = true)) {
                 return fromApi(id, null)
             }
-            return if (models.isNotEmpty()) models.first() else AiModel("gemini", "Gemini")
+            return if (models.isNotEmpty()) models.first() else DEFAULT_MODELS.firstOrNull() ?: AiModel("gemini-4-argon", "Gemini 4 Argon")
         }
     }
 }

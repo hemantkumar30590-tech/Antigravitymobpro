@@ -13,8 +13,8 @@ import {
 } from 'lucide-react'
 
 export const BrowserScreen: React.FC = () => {
-  const [url, setUrl] = useState('https://santoshkurmi.github.io/antigem/')
-  const [currentUrl, setCurrentUrl] = useState('https://santoshkurmi.github.io/antigem/')
+  const [url, setUrl] = useState('https://hemantkumar30590-tech.github.io/Antigravitymobpro/')
+  const [currentUrl, setCurrentUrl] = useState('https://hemantkumar30590-tech.github.io/Antigravitymobpro/')
   const [showConsole, setShowConsole] = useState(false)
   const [activeTab, setActiveTab] = useState<'preview' | 'webmcp'>('webmcp')
   const [tools, setTools] = useState<WebMcpTool[]>(INITIAL_WEBMCP_TOOLS)

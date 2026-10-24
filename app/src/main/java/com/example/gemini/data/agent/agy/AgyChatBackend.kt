@@ -1779,7 +1779,7 @@ class AgyChatBackend(
                                 _selectedModelId.value = matched.id
                                 authPrefs.savePreferredModel(modelId = matched.id, modelKey = matched.key, displayName = matched.displayName)
                             } else {
-                                val preferred = models.find { it.key.contains("3.8") || it.key.contains("flash") } ?: models.first()
+                                val preferred = models.find { it.key.contains("argon") || it.id.contains("argon") } ?: models.find { it.key.contains("3.8") || it.key.contains("flash") } ?: models.first()
                                 _selectedModelId.value = preferred.id
                             }
                         }

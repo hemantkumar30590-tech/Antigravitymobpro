@@ -54,13 +54,15 @@ class AgyModelService {
             }
             if (defaultModelEnum.isBlank() || !allValidEnums.contains(defaultModelEnum)) {
                 defaultModelEnum = models.firstOrNull {
+                    it.displayName.contains("argon", ignoreCase = true) || it.key.contains("argon", ignoreCase = true)
+                }?.id ?: models.firstOrNull {
                     it.displayName.contains("flash", ignoreCase = true) || it.key.contains("flash", ignoreCase = true)
                 }?.id ?: models.first().id
             }
         }
 
         fun resolveModelEnum(rawInput: String?): String {
-            if (rawInput.isNullOrBlank()) return defaultModelEnum.ifBlank { "MODEL_PLACEHOLDER_M319" }
+            if (rawInput.isNullOrBlank()) return defaultModelEnum.ifBlank { "gemini-4-argon" }
             if (allValidEnums.contains(rawInput)) return rawInput
 
             val lower = rawInput.lowercase().trim()
