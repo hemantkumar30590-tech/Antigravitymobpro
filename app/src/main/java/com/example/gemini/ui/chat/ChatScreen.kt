@@ -2035,7 +2035,7 @@ fun ChatScreen(
                     },
                     isTranscribingAudio = isTranscribingAudio,
                     speechManager = if (isClaudeChat) viewModel.claudeVoice else viewModel.speechManager,
-                    voiceNotesAsText = isClaudeChat,
+                    voiceNotesAsText = true,
                     cascadeId = activeConversationKey,
                     focusRequester = chatInputFocusRequester
                 )

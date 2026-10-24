@@ -252,6 +252,12 @@ val copyScriptsToAssets = tasks.register<Copy>("copyScriptsToAssets") {
   from(layout.projectDirectory.file("../scripts/backup_proot_ubuntu.sh")) {
     rename { "backup_proot_ubuntu" }
   }
+  from(layout.projectDirectory.file("../scripts/install_devstack.sh")) {
+    rename { "install_devstack" }
+  }
+  from(layout.projectDirectory.file("../scripts/start_tunnel.sh")) {
+    rename { "start_tunnel" }
+  }
   into(layout.projectDirectory.dir("src/main/assets/bin"))
 }
 

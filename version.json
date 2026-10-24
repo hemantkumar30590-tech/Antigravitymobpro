@@ -1,15 +1,14 @@
 {
-  "version_code": 114,
-  "version_name": "2.4.0",
+  "version_code": 115,
+  "version_name": "2.4.1",
   "min_supported_version_code": 1,
   "changelog": [
-    "Oct 2026 Mobile Developer Edition: Integrated Google Gemini 4 Argon & Claude 4 Sonnet Flagship Engines",
-    "Pre-configured One-Click Native Termux MCP Presets (GitHub MCP, DevTools, Filesystem)",
-    "Added Parallel Background Subagent Orchestrator with isolated context windows and live trajectory logs",
-    "Added Git Worktrees Manager for conflict-free multi-agent parallel execution and 1-click merge to main",
-    "Added Durable Execution Checkpoints and Time-Travel Rewind snapshots across IDE and Chat",
-    "Added Persistent Project Memory and AGENTS.md Rules Bank with project, protocol, and session scopes",
-    "Updated official Antigravitymobpro repository integration and releases channel"
+    "Integrated Seamless In-App Auto-Updater: Direct APK background download and 1-tap install",
+    "Universal Voice-to-Code: Live real-time speech dictation for Gemini 4 Argon, Gemini 3.8 and Claude",
+    "1-Click Termux Developer Stack Installer (Node.js, pnpm, Python 3, uv, Git, Go, Rust, OpenSSH)",
+    "Built-in Cloudflare Port Tunneling for instant public HTTPS sharing of local web servers",
+    "Expanded Native Termux MCP Presets: GitHub, SQLite, DuckDuckGo Web Search & Android System",
+    "Pure AMOLED Pitch-Black Theme for maximized battery longevity during long coding sessions"
   ],
   "is_critical": false
 }

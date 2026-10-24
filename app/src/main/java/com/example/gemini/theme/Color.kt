@@ -10,10 +10,12 @@ val ClaudeWarmSurface = Color(0xFFF9F9FB)
 val ClaudeUserBubbleLight = Color(0xFFE8EAED)
 val ClaudeThinkingLight = Color(0xFFF1F3F5)
 
-val ClaudeDarkBg = Color(0xFF181816)
-val ClaudeDarkSurface = Color(0xFF232320)
-val ClaudeUserBubbleDark = Color(0xFF32312D)
-val ClaudeThinkingDark = Color(0xFF282724)
+val ClaudeDarkBg = Color(0xFF000000) // Pure AMOLED Pitch-Black
+val ClaudeDarkSurface = Color(0xFF0F0F0F)
+val ClaudeUserBubbleDark = Color(0xFF1C1C1E)
+val ClaudeThinkingDark = Color(0xFF141416)
+val AmoledDarkBg = Color(0xFF000000)
+val AmoledDarkSurface = Color(0xFF0A0A0A)
 
 val CodeBlockBgDark = Color(0xFF1E1E1C)
 val TextPrimaryLight = Color(0xFF1C1917)

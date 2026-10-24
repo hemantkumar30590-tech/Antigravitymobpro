@@ -2661,6 +2661,33 @@ private fun McpSubScreen(
                         "PATH" to "/data/data/com.termux/files/home/.local/bin:/data/data/com.termux/files/usr/bin:/system/bin"
                     )
                 )),
+                Triple("SQLite (Termux)", "Stdio", com.example.gemini.domain.model.McpServerSpec(
+                    serverName = "sqlite",
+                    command = "pnpm",
+                    args = listOf("dlx", "@modelcontextprotocol/server-sqlite", "--db-path", "/data/data/com.termux/files/home/workspace.db"),
+                    env = mapOf(
+                        "LD_PRELOAD" to "/data/data/com.termux/files/usr/lib/libtermux-exec.so",
+                        "PATH" to "/data/data/com.termux/files/home/.local/bin:/data/data/com.termux/files/usr/bin:/system/bin"
+                    )
+                )),
+                Triple("Web Search (DDG)", "Stdio", com.example.gemini.domain.model.McpServerSpec(
+                    serverName = "web_search",
+                    command = "pnpm",
+                    args = listOf("dlx", "@modelcontextprotocol/server-duckduckgo"),
+                    env = mapOf(
+                        "LD_PRELOAD" to "/data/data/com.termux/files/usr/lib/libtermux-exec.so",
+                        "PATH" to "/data/data/com.termux/files/home/.local/bin:/data/data/com.termux/files/usr/bin:/system/bin"
+                    )
+                )),
+                Triple("Android System (Termux:API)", "Stdio", com.example.gemini.domain.model.McpServerSpec(
+                    serverName = "android_system",
+                    command = "node",
+                    args = listOf("/data/data/com.termux/files/home/.gemini/android_mcp.js"),
+                    env = mapOf(
+                        "LD_PRELOAD" to "/data/data/com.termux/files/usr/lib/libtermux-exec.so",
+                        "PATH" to "/data/data/com.termux/files/home/.local/bin:/data/data/com.termux/files/usr/bin:/system/bin"
+                    )
+                )),
             )
             Surface(
                 shape = RoundedCornerShape(8.dp),
@@ -4184,6 +4211,69 @@ private fun TerminalSubScreen(
                                 Text(text = label, fontSize = 11.5.sp, fontWeight = if (isSel) FontWeight.Bold else FontWeight.Medium, color = if (isSel) Color.White else MaterialTheme.colorScheme.onSurface)
                             }
                         }
+                    }
+                }
+            }
+        }
+
+        // Card: Termux Developer Stack & Tunneling
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(14.dp),
+            colors = CardDefaults.cardColors(containerColor = cardBg),
+            border = cardBorder
+        ) {
+            Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(imageVector = Icons.Default.Construction, contentDescription = null, tint = GeminiBlue, modifier = Modifier.size(20.dp))
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text("Developer Tooling & Cloudflare Tunnel", fontWeight = FontWeight.Bold, fontSize = 14.sp, color = MaterialTheme.colorScheme.onSurface)
+                }
+                Text("Bootstrap complete developer toolchains (Node LTS, pnpm, Python 3, uv, Git, Go, Rust) and expose local dev servers to public HTTPS with one click.", fontSize = 11.5.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Button(
+                        onClick = {
+                            val intent = android.content.Intent("${context.packageName}.RUN_COMMAND").apply {
+                                setPackage(context.packageName)
+                                putExtra("${context.packageName}.RUN_COMMAND_PATH", "/data/data/com.termux/files/usr/bin/bash")
+                                putExtra("${context.packageName}.RUN_COMMAND_ARGUMENTS", arrayOf("/data/data/com.termux/files/home/Antigravitymobpro/scripts/install_devstack.sh"))
+                                putExtra("${context.packageName}.RUN_COMMAND_SESSION_ACTION", "0")
+                            }
+                            try {
+                                context.startService(intent)
+                                Toast.makeText(context, "Started DevStack Installer in Terminal!", Toast.LENGTH_SHORT).show()
+                            } catch (_: Exception) {
+                                onOpenLocalTerminal()
+                            }
+                        },
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(8.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = GeminiBlue)
+                    ) {
+                        Text("1-Click DevStack", fontSize = 11.5.sp, fontWeight = FontWeight.Bold)
+                    }
+
+                    Button(
+                        onClick = {
+                            val intent = android.content.Intent("${context.packageName}.RUN_COMMAND").apply {
+                                setPackage(context.packageName)
+                                putExtra("${context.packageName}.RUN_COMMAND_PATH", "/data/data/com.termux/files/usr/bin/bash")
+                                putExtra("${context.packageName}.RUN_COMMAND_ARGUMENTS", arrayOf("/data/data/com.termux/files/home/Antigravitymobpro/scripts/start_tunnel.sh", "3000"))
+                                putExtra("${context.packageName}.RUN_COMMAND_SESSION_ACTION", "0")
+                            }
+                            try {
+                                context.startService(intent)
+                                Toast.makeText(context, "Started Cloudflare Tunnel on :3000!", Toast.LENGTH_SHORT).show()
+                            } catch (_: Exception) {
+                                onOpenLocalTerminal()
+                            }
+                        },
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(8.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = ClaudeTerracotta)
+                    ) {
+                        Text("Start Tunnel (:3000)", fontSize = 11.5.sp, fontWeight = FontWeight.Bold)
                     }
                 }
             }
@@ -8954,8 +9044,8 @@ private fun AboutSubScreen(
                                         updateCheckResultText = null
                                     } else {
                                         isUpdateCheckError = false
-                                        updateCheckResultText = "AntiGem is up to date (v${BuildConfig.VERSION_NAME})."
-                                        Toast.makeText(context, "AntiGem is up to date!", Toast.LENGTH_SHORT).show()
+                                        updateCheckResultText = "Antigravitymobpro is up to date (v${BuildConfig.VERSION_NAME})."
+                                        Toast.makeText(context, "Antigravitymobpro is up to date!", Toast.LENGTH_SHORT).show()
                                     }
                                 }.onFailure { err ->
                                     isUpdateCheckError = true

@@ -17,7 +17,7 @@ import java.io.File
 import java.util.concurrent.TimeUnit
 
 private const val TAG = "AppUpdateManager"
-private const val DEFAULT_VERSION_URL = "https://raw.githubusercontent.com/hemantkumar30590-tech/antigravitymob/master/version.json"
+private const val DEFAULT_VERSION_URL = "https://raw.githubusercontent.com/hemantkumar30590-tech/Antigravitymobpro/main/version.json"
 
 data class AppUpdateInfo(
     val versionCode: Int,
@@ -85,7 +85,7 @@ class AppUpdateManager(private val context: Context) {
             // Auto-generate package-specific download URL based on remote version name and flavor
             val currentPkg = context.packageName
             val flavorType = if (currentPkg == "com.termux") "termux" else "standard"
-            val downloadUrl = "https://github.com/hemantkumar30590-tech/antigravitymob/releases/download/v$remoteVersionName/Antigravitymobpro-$flavorType-v$remoteVersionName-release.apk"
+            val downloadUrl = "https://github.com/hemantkumar30590-tech/Antigravitymobpro/releases/download/v$remoteVersionName/Antigravitymobpro-$flavorType-v$remoteVersionName-release.apk"
 
             if (remoteVersionCode > BuildConfig.VERSION_CODE && downloadUrl.isNotBlank()) {
                 // Verify that the APK asset is actually published and downloadable on GitHub
